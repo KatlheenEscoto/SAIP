@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hp.engbook.vistas.NivelActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ues1"/>
+            <TextView
+                android:layout_below="@+id/img"
+                android:id="@+id/palabra"
+                android:layout_marginTop="30dp"
+                android:layout_centerInParent="true"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"/>
+
+            <TextView
+                android:layout_below="@+id/palabra"
+                android:id="@+id/idioma"
+                android:layout_marginTop="30dp"
+                android:layout_centerInParent="true"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/traduccion"/>
+        </RelativeLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imagass"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sig"
+        android:onClick="siguiente"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/igmas"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/anterior"
+        android:onClick="anterior"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        app:rippleColor="@color/verde"
+        android:background="@color/verde"
+        android:src="@drawable/cheque"
+        android:layout_centerHorizontal="true"
+        android:onClick="listo"
+        />
+
+</RelativeLayout>
