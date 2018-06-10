@@ -47,9 +47,10 @@
         android:layout_height="50dp"
         android:src="@drawable/sig"
         android:onClick="siguiente"
-        android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         />
 
     <ImageView
@@ -58,21 +59,35 @@
         android:layout_height="50dp"
         android:src="@drawable/anterior"
         android:onClick="anterior"
-        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="100dp"
         app:rippleColor="@color/verde"
         android:background="@color/verde"
         android:src="@drawable/cheque"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="250dp"
         android:onClick="listo"
         />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        app:rippleColor="@color/verde"
+        android:background="@color/verde"
+        android:src="@drawable/audio1"
+        android:onClick="escuchar"
+        />
+
 
 </RelativeLayout>

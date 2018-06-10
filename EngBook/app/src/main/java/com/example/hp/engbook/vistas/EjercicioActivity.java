@@ -34,8 +34,8 @@ public class EjercicioActivity extends AppCompatActivity {
         db = new DataBase(this);
         idioma = getIntent().getExtras().getInt("idioma");
         id_user = getIntent().getExtras().getInt("id_user");
-        final Cursor c = db.getAllNivel(id_user);
-        ArrayList<ModelAdapter> model = new ArrayList<ModelAdapter>();
+        final Cursor c = db.getAllNivel(id_user, idioma);
+        final ArrayList<ModelAdapter> model = new ArrayList<ModelAdapter>();
         if(c!=null && c.getCount()>0){
             while (c.moveToNext()){
                 model.add(new ModelAdapter(c.getInt(0),c.getInt(3),c.getString(1),c.getInt(5)));
@@ -57,7 +57,7 @@ public class EjercicioActivity extends AppCompatActivity {
                     TextView t = (TextView)view.findViewById(R.id.mesaje);
                     intent.putExtra("idioma",idioma);
                     intent.putExtra("nivel",t.getText().toString());
-                    int level =i +1;
+                    int level =model.get(i).getId();
                     intent.putExtra("idnivel",level);
                     finish();
                     startActivity(intent);

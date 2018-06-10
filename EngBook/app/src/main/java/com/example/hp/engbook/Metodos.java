@@ -2,7 +2,9 @@ package com.example.hp.engbook;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Vibrator;
@@ -70,6 +72,11 @@ public class Metodos {
         editor.putString("name"," ");
         editor.putInt("idUser",0);
         editor.commit();
+
+        Intent intent = new Intent(cxt,MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("salir",true);
+        cxt.startActivity(intent);
     }
 
 
@@ -85,6 +92,17 @@ public class Metodos {
         db.insertNivel(new Nivel(8,"nivel 8",0,R.drawable.bloqueado,"04/06/2018",2,1,idUser));
         db.insertNivel(new Nivel(9,"nivel 9",0,R.drawable.bloqueado,"04/06/2018",2,1,idUser));
         db.insertNivel(new Nivel(10,"nivel 10",0,R.drawable.bloqueado,"04/06/2018",2,1,idUser));
+
+        db.insertNivel(new Nivel(11,"nivel 1",0,R.drawable.desbloqueado,"04/06/2018",1,2,idUser));
+        db.insertNivel(new Nivel(12,"nivel 2",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(13,"nivel 3",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(14,"nivel 4",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(15,"nivel 5",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(16,"nivel 6",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(17,"nivel 7",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(18,"nivel 8",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(19,"nivel 9",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(20,"nivel 10",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
 
 
         //nivel 1
@@ -105,36 +123,27 @@ public class Metodos {
         db.insertFrase(new Frase(13,"8 (ocho)","eight","oito",R.drawable.ocho));
         db.insertFrase(new Frase(14,"9 (nueve)","nine","nove",R.drawable.neve));
         db.insertFrase(new Frase(15,"10 (diez)","ten","dez",R.drawable.diez));
-
-
-
-        db.insertnivel_palabra(new Nivel_Palabra(1,1,1));
-        db.insertnivel_palabra(new Nivel_Palabra(2,1,2));
-        db.insertnivel_palabra(new Nivel_Palabra(3,1,3));
-        db.insertnivel_palabra(new Nivel_Palabra(4,1,4));
-        db.insertnivel_palabra(new Nivel_Palabra(5,1,5));
-
-        db.insertnivel_palabra(new Nivel_Palabra(1,2,6));
-        db.insertnivel_palabra(new Nivel_Palabra(2,2,7));
-        db.insertnivel_palabra(new Nivel_Palabra(3,2,8));
-        db.insertnivel_palabra(new Nivel_Palabra(4,2,9));
-        db.insertnivel_palabra(new Nivel_Palabra(5,2,10));
-        db.insertnivel_palabra(new Nivel_Palabra(1,2,11));
-        db.insertnivel_palabra(new Nivel_Palabra(2,2,12));
-        db.insertnivel_palabra(new Nivel_Palabra(3,2,13));
-        db.insertnivel_palabra(new Nivel_Palabra(4,2,14));
-        db.insertnivel_palabra(new Nivel_Palabra(5,2,15));
-
+        inciarLevel1(1,db);
+        inciarLevel1(11,db);
     }
 
-
-
-
-
-
-
-
-
-
+    private static void inciarLevel1(int id, DataBase db){
+        db.insertnivel_palabra(new Nivel_Palabra(1,id,1));
+        db.insertnivel_palabra(new Nivel_Palabra(2,id,2));
+        db.insertnivel_palabra(new Nivel_Palabra(3,id,3));
+        db.insertnivel_palabra(new Nivel_Palabra(4,id,4));
+        db.insertnivel_palabra(new Nivel_Palabra(5,id,5));
+        id=id+1;
+        db.insertnivel_palabra(new Nivel_Palabra(1,id,6));
+        db.insertnivel_palabra(new Nivel_Palabra(2,id,7));
+        db.insertnivel_palabra(new Nivel_Palabra(3,id,8));
+        db.insertnivel_palabra(new Nivel_Palabra(4,id,9));
+        db.insertnivel_palabra(new Nivel_Palabra(5,id,10));
+        db.insertnivel_palabra(new Nivel_Palabra(1,id,11));
+        db.insertnivel_palabra(new Nivel_Palabra(2,id,12));
+        db.insertnivel_palabra(new Nivel_Palabra(3,id,13));
+        db.insertnivel_palabra(new Nivel_Palabra(4,id,14));
+        db.insertnivel_palabra(new Nivel_Palabra(5,id,15));
+    }
 
 }

@@ -59,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if( getIntent().getBooleanExtra("salir", false)){
+            finish();
+            return;
+        }
+
     }
 
 

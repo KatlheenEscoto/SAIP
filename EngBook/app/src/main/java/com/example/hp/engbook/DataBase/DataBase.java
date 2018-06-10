@@ -233,9 +233,9 @@ public class DataBase extends SQLiteOpenHelper {
         return false;
     }
 
-    public Cursor getAllNivel(int id_user){
+    public Cursor getAllNivel(int id_user, int idioma){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c =db.rawQuery("select * from ejercicio where ID_USER = "+id_user,null);
+        Cursor c =db.rawQuery("select * from ejercicio where ID_USER = "+id_user+" and idioma = "+idioma,null);
         return c;
     }
 
