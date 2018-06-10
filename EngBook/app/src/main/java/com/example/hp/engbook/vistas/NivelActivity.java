@@ -57,7 +57,6 @@ public class NivelActivity extends AppCompatActivity {
         fin = frases.size()-1;
 
         if(fin>1) insertar();
-
     }
 
     TextToSpeech.OnInitListener OnInit = new TextToSpeech.OnInitListener() {
@@ -178,3 +177,12 @@ public class NivelActivity extends AppCompatActivity {
         tts.speak(resp.getText().toString(), TextToSpeech.QUEUE_ADD, null);
     }
 }
+
+
+
+
+
+
+
+
+

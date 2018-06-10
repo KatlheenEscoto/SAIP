@@ -42,25 +42,26 @@ public class EjercicioActivity extends AppCompatActivity {
             }
         }else
             Toast.makeText(this,"Lo siento no hay datos",Toast.LENGTH_LONG).show();
-        Adapter adapter = new Adapter(this,model);
+        adapter = new Adapter(this,model);
         lista.setAdapter(adapter);
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TextView t1 = (TextView)view.findViewById(R.id.bloq);
-                String bl = t1.getHint().toString();
-                String idNivel = t1.getHint().toString();
-                int idN = Integer.parseInt(idNivel);
-                int bloq = Integer.parseInt(bl);
+                ModelAdapter modelo = model.get(i);
+                int bloq = modelo.getBloqueado();
+                int level = modelo.getId();
                 if(bloq==1){
-                    Intent intent = new Intent(getApplicationContext(),NivelActivity.class);
-                    TextView t = (TextView)view.findViewById(R.id.mesaje);
-                    intent.putExtra("idioma",idioma);
-                    intent.putExtra("nivel",t.getText().toString());
-                    int level =model.get(i).getId();
-                    intent.putExtra("idnivel",level);
-                    finish();
-                    startActivity(intent);
+                    if(level==10 || level==20){
+                        Intent intent1 = new Intent(getApplicationContext(),MusicActivity.class);
+                        startActivity(intent1);
+                        finish();
+                    }else{
+                        Intent intent = new Intent(getApplicationContext(),NivelActivity.class);
+                        intent.putExtra("idioma",idioma);
+                        intent.putExtra("idnivel",level);
+                        startActivity(intent);
+                        finish();
+                    }
                 }else{
                     Toast.makeText(getApplicationContext(),"Nivel bloqueado por favor complete el nivel anterior",Toast.LENGTH_LONG).show();
                 }

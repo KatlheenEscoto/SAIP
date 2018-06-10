@@ -20,4 +20,6 @@
     <string name="ingles">ingles</string>
     <string name="port">portugues</string>
     <string name="traduccion">traduccion</string>
+    <string name="espa">Español</string>
+    <string name="congra">Felicidades, termino el curso, espere mas actualizaciones</string>
 </resources>

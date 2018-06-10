@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hp.engbook.vistas.MusicActivity"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RadioGroup
+                    android:id="@+id/grupoRadio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/radioIngles"
+                        android:text="@string/ingles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"/>
+                    <RadioButton
+                        android:id="@+id/radioEspa"
+                        android:text="@string/espa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:checked="true"/>
+                    <RadioButton
+                        android:id="@+id/radioPort"
+                        android:text="@string/port"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"/>
+                </RadioGroup>
+                <ImageView
+                    android:layout_below="@+id/grupoRadio"
+                    android:id="@+id/imagenMyLife"
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="25dp"
+                    android:src="@drawable/my"
+                    />
+
+                <TextView
+                    android:id="@+id/letra"
+                    android:layout_below="@+id/imagenMyLife"
+                    android:padding="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/app_name"
+                    />
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/play"
+        android:onClick="play"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnstop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="170dp"
+        android:src="@drawable/stop"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:onClick="stop"
+        />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/listo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cheque"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:onClick="sig"
+        />
+
+
+
+</RelativeLayout>

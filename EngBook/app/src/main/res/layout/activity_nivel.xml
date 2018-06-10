@@ -70,8 +70,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="100dp"
-        app:rippleColor="@color/verde"
-        android:background="@color/verde"
         android:src="@drawable/cheque"
         android:layout_marginLeft="250dp"
         android:onClick="listo"
@@ -83,8 +81,6 @@
         android:layout_marginLeft="100dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="100dp"
-        app:rippleColor="@color/verde"
-        android:background="@color/verde"
         android:src="@drawable/audio1"
         android:onClick="escuchar"
         />

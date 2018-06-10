@@ -91,7 +91,7 @@ public class Metodos {
         db.insertNivel(new Nivel(7,"nivel 7",0,R.drawable.bloqueado,"04/06/2018",2,1,idUser));
         db.insertNivel(new Nivel(8,"nivel 8",0,R.drawable.bloqueado,"04/06/2018",2,1,idUser));
         db.insertNivel(new Nivel(9,"nivel 9",0,R.drawable.bloqueado,"04/06/2018",2,1,idUser));
-        db.insertNivel(new Nivel(10,"nivel 10",0,R.drawable.bloqueado,"04/06/2018",2,1,idUser));
+        db.insertNivel(new Nivel(10,"nivel 10",0,R.drawable.desbloqueado,"04/06/2018",1,1,idUser));
 
         db.insertNivel(new Nivel(11,"nivel 1",0,R.drawable.desbloqueado,"04/06/2018",1,2,idUser));
         db.insertNivel(new Nivel(12,"nivel 2",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
@@ -102,7 +102,7 @@ public class Metodos {
         db.insertNivel(new Nivel(17,"nivel 7",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
         db.insertNivel(new Nivel(18,"nivel 8",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
         db.insertNivel(new Nivel(19,"nivel 9",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
-        db.insertNivel(new Nivel(20,"nivel 10",0,R.drawable.bloqueado,"04/06/2018",2,2,idUser));
+        db.insertNivel(new Nivel(20,"nivel 10",0,R.drawable.desbloqueado,"04/06/2018",1,2,idUser));
 
 
         //nivel 1
