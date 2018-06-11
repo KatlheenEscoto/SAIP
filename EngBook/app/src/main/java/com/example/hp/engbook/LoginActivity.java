@@ -265,7 +265,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }else{
                 p.insertDataUser("walter","root");
                 idUsuario=1;
+
+                //Inicializar.
                 Metodos.insertarNiveles(this,1);
+                Metodos.insertarExamenes(this,1);
+
                 Metodos.saveFileG(this,fileName,1);
                 Metodos.notificacion(this,"Usuario: walter \n contraseña: root","Bienvenido a nuestra aplicacion","By: Grupo1 PDM115");
             }

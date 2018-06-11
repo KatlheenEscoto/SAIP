@@ -7,22 +7,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.hp.engbook.model.Adapter;
+import com.example.hp.engbook.vistas.EstadisticasActivity;
 import com.example.hp.engbook.model.ModelAdapter;
 import com.example.hp.engbook.vistas.DondeEstoyActivity;
 import com.example.hp.engbook.vistas.EjercicioActivity;
+import com.example.hp.engbook.vistas.ExamenActivity;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
     private String[] menu = {"Ejercicios","Examenes","Avance","Estadisticas","Configuracion"};
-    private Class[] clases = {EjercicioActivity.class,EjercicioActivity.class,EjercicioActivity.class,EjercicioActivity.class,EjercicioActivity.class};
+    private Class[] clases = {EjercicioActivity.class,ExamenActivity.class,EjercicioActivity.class, EstadisticasActivity.class,EjercicioActivity.class};
     private ListView lista;
     private RadioGroup radios;
     private int id_user;

@@ -29,7 +29,11 @@
         <activity android:name=".vistas.EjercicioActivity" />
         <activity android:name=".vistas.DondeEstoyActivity" />
         <activity android:name=".vistas.NivelActivity" />
-        <activity android:name=".vistas.MusicActivity"></activity>
+        <activity android:name=".vistas.MusicActivity" />
+        <activity android:name=".vistas.EstadisticasActivity" />
+        <activity android:name=".vistas.ExamenActivity" />
+        <activity android:name=".vistas.NivelExamenActivity" />
+        <activity android:name=".vistas.IntentoExamenActivity"></activity>
     </application>
 
 </manifest>
