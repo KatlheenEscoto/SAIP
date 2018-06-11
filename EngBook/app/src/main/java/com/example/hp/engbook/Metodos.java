@@ -23,7 +23,7 @@ import com.example.hp.engbook.model.Nivel_Palabra;
 public class Metodos {
     public static void vibrateSimple(Context context){
         Vibrator v = (Vibrator)context.getSystemService(context.VIBRATOR_SERVICE);
-        v.vibrate(30000);
+        v.vibrate(1000);
     }
 
     public static void vibratePatter(Context context){
