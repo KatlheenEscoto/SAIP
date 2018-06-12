@@ -340,5 +340,33 @@ public class DataBase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor puntuacionMaximaPorExamen(int idExamen, int idUser, int idioma){
+        String[] campo = new String[] {"max(puntuacion)"};
+        String idiomaStr = String.valueOf(idioma);
+        String idExamenStr = String.valueOf(idExamen);
+        String idUserStr = String.valueOf(idUser);
+        String[] id = new String[] {idiomaStr,idExamenStr, idUserStr};
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query("intento_examen", campo, "idioma = ? and idexamen = ? and id_user = ?", id, null, null, null);
+        return cursor;
+    }
+
+    public int contarExamenes(int idioma){
+        String[] campo = new String[] {"count(idioma)"}; //Contando cuantas veces aparecen los examenes de un idioma.
+        String idiomaStr = String.valueOf(idioma);
+        String[] id = {idiomaStr};
+        int resultado = 0;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query("examen", campo, "idioma = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            resultado = cursor.getInt(0);
+        }else{
+            resultado = 0;
+        }
+        return resultado;
+    }
+
 
 }

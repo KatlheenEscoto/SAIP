@@ -30,7 +30,6 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }
 
-
 //Gráficos
 repositories {
     maven { url 'https://jitpack.io' }

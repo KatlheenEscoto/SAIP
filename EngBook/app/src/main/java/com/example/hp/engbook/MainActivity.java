@@ -16,13 +16,14 @@ import com.example.hp.engbook.model.ModelAdapter;
 import com.example.hp.engbook.vistas.DondeEstoyActivity;
 import com.example.hp.engbook.vistas.EjercicioActivity;
 import com.example.hp.engbook.vistas.ExamenActivity;
+import com.example.hp.engbook.vistas.OpcionesGraficoActivity;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
     private String[] menu = {"Ejercicios","Examenes","Avance","Estadisticas","Configuracion"};
-    private Class[] clases = {EjercicioActivity.class,ExamenActivity.class,EjercicioActivity.class, EstadisticasActivity.class,EjercicioActivity.class};
+    private Class[] clases = {EjercicioActivity.class,ExamenActivity.class,EjercicioActivity.class, OpcionesGraficoActivity.class,EjercicioActivity.class};
     private ListView lista;
     private RadioGroup radios;
     private int id_user;
