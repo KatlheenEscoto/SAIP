@@ -3,15 +3,17 @@ package com.example.hp.engbook.model;
 public class Intento_Examen {
     private int idIntento;
     private float puntuacion;
+    private int idioma;
     private int idExamen;
     private int idUser;
 
     public Intento_Examen() {
     }
 
-    public Intento_Examen(int idIntento, float puntuacion, int idExamen, int idUser) {
+    public Intento_Examen(int idIntento, float puntuacion, int idioma, int idExamen, int idUser) {
         this.idIntento = idIntento;
         this.puntuacion = puntuacion;
+        this.idioma = idioma;
         this.idExamen = idExamen;
         this.idUser = idUser;
     }
@@ -30,6 +32,14 @@ public class Intento_Examen {
 
     public void setPuntuacion(float puntuacion) {
         this.puntuacion = puntuacion;
+    }
+
+    public int getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(int idioma) {
+        this.idioma = idioma;
     }
 
     public int getIdExamen() {

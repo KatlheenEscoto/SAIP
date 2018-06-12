@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 
 public class DataBase extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "databasePrueba2.db";
+    public static final String DATABASE_NAME = "databasePrueba3.db";
 
     public static final String TABLE_NAME1 = "user_table";
     public static final String COL_1 = "NAME";
@@ -45,7 +45,7 @@ public class DataBase extends SQLiteOpenHelper {
         //Tablas para Examen (modificar) porque solo considere para los graficos los atributos.
         db.execSQL("CREATE TABLE examen (idexamen INTEGER PRIMARY KEY AUTOINCREMENT, nivelexamen TEXT NOT NULL, imagen INTEGER NOT NULL, desbloqueado INTEGER NOT NULL ,idioma INTEGER NOT NULL ,id_user INTEGER NOT NULL)");
         //El usuario puede hacer varias veces el examen, y asi vemos el avance en el mismo examen, por ejemplo, se saca 5 y en el otro 7 no se sobreescribe siendo una tabla aparte.
-        db.execSQL("CREATE TABLE intento_examen (idintento INTEGER NOT NULL, puntuacion REAL NOT NULL, idexamen INTEGER NOT NULL, id_user INTEGER NOT NULL, PRIMARY KEY(idintento, idexamen,id_user))");
+        db.execSQL("CREATE TABLE intento_examen (idintento INTEGER NOT NULL, puntuacion REAL NOT NULL, idioma INTEGER NOT NULL ,idexamen INTEGER NOT NULL, id_user INTEGER NOT NULL, PRIMARY KEY(idintento, idexamen,id_user, idioma))");
     }
 
     @Override
@@ -307,13 +307,14 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
 
-    //db.execSQL("CREATE TABLE intento_examen (idintento INTEGER PRIMARY KEY, puntuacion REAL NOT NULL, idexamen INTEGER NOT NULL, id_user INTEGER NOT NULL)");
+    //db.execSQL("CREATE TABLE intento_examen (idintento INTEGER NOT NULL, puntuacion REAL NOT NULL, idioma INTEGER NOT NULL ,idexamen INTEGER NOT NULL, id_user INTEGER NOT NULL, PRIMARY KEY(idintento, idexamen,id_user, idioma))");
     public boolean insertarIntentoExamen(Intento_Examen intento){
         boolean regInsertado = false;
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("idintento", intento.getIdIntento());
         cv.put("puntuacion", intento.getPuntuacion());
+        cv.put("idioma", intento.getIdioma());
         cv.put("idexamen", intento.getIdExamen());
         cv.put("id_user", intento.getIdUser());
 
@@ -327,16 +328,17 @@ public class DataBase extends SQLiteOpenHelper {
         return regInsertado;
     }
 
-    public ArrayList<Float> puntuacionesIntentoExamen(int idExamen, int idUser){
-        ArrayList<Float> puntuaciones = new ArrayList<Float>();
+    public Cursor puntuacionesIntentoExamen(int idExamen, int idUser, int idioma){
+        String[] campo = new String[] {"puntuacion"};
+        String idiomaStr = String.valueOf(idioma);
+        String idExamenStr = String.valueOf(idExamen);
+        String idUserStr = String.valueOf(idUser);
+        String[] id = new String[] {idiomaStr,idExamenStr, idUserStr};
+
         SQLiteDatabase db = this.getWritableDatabase();
-        float resultado = 0;
-        Cursor c = db.rawQuery("select puntuacion from examen where id_user = "+idUser+" and idExamen = "+idExamen,null);
-        for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()){
-            resultado = c.getFloat(0);
-            puntuaciones.add(resultado);
-        }
-        return puntuaciones;
+        Cursor cursor = db.query("intento_examen",campo, "idioma = ? and idexamen = ? and id_user = ?", id, null, null, null);
+        return cursor;
     }
+
 
 }

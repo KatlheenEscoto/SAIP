@@ -42,7 +42,7 @@ public class NivelExamenActivity extends AppCompatActivity {
                 Toast.makeText(v.getContext(), "Error en el rango. Es de 0 a 10.", Toast.LENGTH_SHORT).show();
             }else{
                 intento +=1;
-                boolean res = db.insertarIntentoExamen(new Intento_Examen(intento, puntuacion, nivel, id_user));
+                boolean res = db.insertarIntentoExamen(new Intento_Examen(intento, puntuacion,idioma ,nivel, id_user));
                 if(res==true){
                     Toast.makeText(v.getContext(), "Puntuación Insertada.", Toast.LENGTH_SHORT).show();
                 }else{
