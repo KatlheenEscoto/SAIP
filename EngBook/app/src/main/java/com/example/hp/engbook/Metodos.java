@@ -145,6 +145,7 @@ public class Metodos {
         db.insertnivel_palabra(new Nivel_Palabra(3,id,13));
         db.insertnivel_palabra(new Nivel_Palabra(4,id,14));
         db.insertnivel_palabra(new Nivel_Palabra(5,id,15));
+
     }
 
     //Examenes

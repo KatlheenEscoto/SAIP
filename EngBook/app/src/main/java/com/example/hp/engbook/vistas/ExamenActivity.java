@@ -59,6 +59,7 @@ public class ExamenActivity extends AppCompatActivity {
                         startActivity(intent1);
                         finish();*/
                         //La ultima leccion de Walter es que aprendan una canción creo, asi que algo relacionado con eso seria el ultimo examen.
+                        // simon que canten esa cancion XD
 
                     }else{
                         Intent intent = new Intent(getApplicationContext(),NivelExamenActivity.class);
