@@ -109,6 +109,7 @@ public class NivelActivity extends AppCompatActivity {
                 intentos+=1;
                 i=0;
             }
+
             insertar();
         }else
             Metodos.vibrateSimple(this);
@@ -175,6 +176,9 @@ public class NivelActivity extends AppCompatActivity {
 
     public void escuchar(View view) {
         tts.speak(resp.getText().toString(), TextToSpeech.QUEUE_ADD, null);
+    }
+
+    public void puntaje(View view) {
     }
 }
 

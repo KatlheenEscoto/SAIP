@@ -1,66 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="30dip"
-    android:stretchColumns="1" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hp.engbook.vistas.NivelActivity">
 
-    <RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="Calificación"
-            android:textSize="30sp"/>
-    </RelativeLayout>
-
-
-    <TableRow>
-        <TextView android:text="Puntuación"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp" />
-        <EditText
-            android:id="@+id/puntuacion"
-            android:inputType="numberDecimal"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"/>
-    </TableRow>
-
-
-    <TableRow
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal" >
-        <TextView
-            android:layout_gravity="center"
-            android:text="Opciones" />
-    </TableRow>
-
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-        <Button
-            android:text="Puntuación"
-            android:onClick="insertarPuntaje"
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-    </TableRow>
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
-        <Button
-            android:onClick="limpiarTexto"
-            android:text="limpiar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
-    </TableRow>
+            android:layout_height="match_parent">
 
-</TableLayout>
+            <ImageView
+                android:id="@+id/img"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ues1"/>
+
+            <TextView
+                android:layout_below="@+id/palabra"
+                android:id="@+id/idioma"
+                android:layout_marginTop="30dp"
+                android:layout_centerInParent="true"
+                android:textSize="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/traduccion"/>
+            <TextView
+                android:layout_below="@+id/img"
+                android:id="@+id/respuesta"
+                android:layout_centerHorizontal="true"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="@string/respuesta"/>
+            <EditText
+                android:layout_below="@+id/respuesta"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:id="@+id/editRespuesta"/>
+
+            <Button
+                android:id="@+id/ingresarRespuesta"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/editRespuesta"
+                android:layout_centerHorizontal="true"
+                android:onClick="puntaje"
+                android:text="@string/ingresarRespuesta" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imagass"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sig"
+        android:onClick="siguiente"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        />
+
+    <ImageView
+        android:id="@+id/igmas"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/anterior"
+        android:onClick="anterior"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/cheque"
+        android:layout_marginRight="20dp"
+        android:onClick="listo"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/audio1"
+        android:onClick="escuchar"
+        />
+
+
+</RelativeLayout>

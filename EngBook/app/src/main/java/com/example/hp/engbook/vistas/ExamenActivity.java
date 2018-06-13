@@ -69,7 +69,7 @@ public class ExamenActivity extends AppCompatActivity {
                         finish();
                     }
                 }else{
-                    Toast.makeText(getApplicationContext(),"Nivel bloqueado por favor complete el nivel anterior",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"Examen bloqueado por favor complete el examen anterior",Toast.LENGTH_LONG).show();
                 }
             }
         });

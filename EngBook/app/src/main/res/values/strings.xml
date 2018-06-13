@@ -22,4 +22,6 @@
     <string name="traduccion">traduccion</string>
     <string name="espa">Español</string>
     <string name="congra">Felicidades, termino el curso, espere mas actualizaciones</string>
+    <string name="respuesta">Ingrese la Respuesta</string>
+    <string name="ingresarRespuesta">Ingresar Respuesta</string>
 </resources>
