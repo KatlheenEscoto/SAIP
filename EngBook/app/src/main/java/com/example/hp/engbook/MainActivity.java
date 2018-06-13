@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView lista;
     private RadioGroup radios;
     private int id_user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

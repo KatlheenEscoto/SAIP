@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 
 public class DataBase extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "databasePrueba3.db";
+    public static final String DATABASE_NAME = "databasePrueba5.db";
 
     public static final String TABLE_NAME1 = "user_table";
     public static final String COL_1 = "NAME";
@@ -79,6 +79,22 @@ public class DataBase extends SQLiteOpenHelper {
 
         }
         return false;
+    }
+
+    public int getIdUser(String nombre, String password){
+        String[] campo = new String[] {"ID"};
+        String[] idSupuestos = new String[] {nombre,password};
+        int resultado = -1;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query(TABLE_NAME1, campo, "name = ? AND password = ?", idSupuestos, null, null, null);
+        if(cursor.moveToFirst()){
+            resultado = cursor.getInt(0);
+        }else{
+            resultado = -1;
+        }
+        return resultado;
+
     }
 
 

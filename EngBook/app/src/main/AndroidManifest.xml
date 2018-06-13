@@ -35,7 +35,8 @@
         <activity android:name=".vistas.NivelExamenActivity" />
         <activity android:name=".vistas.IntentoExamenActivity" />
         <activity android:name=".vistas.OpcionesGraficoActivity" />
-        <activity android:name=".vistas.EstadisticaGeneralActivity"></activity>
+        <activity android:name=".vistas.EstadisticaGeneralActivity" />
+        <activity android:name=".InsertarUsuarioActivity"></activity>
     </application>
 
 </manifest>
