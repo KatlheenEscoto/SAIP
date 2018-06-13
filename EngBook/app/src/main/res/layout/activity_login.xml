@@ -34,15 +34,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:weightSum="1">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/holo_blue_dark"
+                    android:gravity="center"
+                    android:text="¡Ingresa!"
+                    android:textSize="30sp" />
+
                 <RelativeLayout
                     android:layout_weight="0.6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ues1"
-                        />
+                        android:src="@drawable/saip"
+                        android:layout_height="130dp" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_weight="0.4"
@@ -97,15 +106,43 @@
                         android:layout_below="@+id/pass_1"/>
 
                 </RelativeLayout>
+                <android.support.design.widget.FloatingActionButton
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/add1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="insertNewUser"
+                    android:layout_gravity="right"/>
 
+                <RelativeLayout
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Creado por GRUPO 1 - PDM115 - 2018 ©"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="italic"
+                        android:gravity="center"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_weight="0.4"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="UNIVERSIDAD DE EL SALVADOR"
+                        android:textColor="@color/rojo"
+                        android:gravity="center"/>
+                </RelativeLayout>
             </LinearLayout>
         </ScrollView>
-        <android.support.design.widget.FloatingActionButton
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/add1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="insertNewUser"/>
+
     </RelativeLayout>
+
+
 </LinearLayout>

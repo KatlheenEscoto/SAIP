@@ -235,7 +235,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     public boolean validar(String nom, String pas){
 
-        //Ingresando supongo.
+        //Ni idea en que lado debia poner esto, pero, funciona c:
             p.insertDataUser("walter","root");
             int idUser = p.getIdUser("walter", "root");
 
