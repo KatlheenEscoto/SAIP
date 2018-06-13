@@ -42,7 +42,8 @@ public class NivelActivity extends AppCompatActivity {
         nivel = getIntent().getExtras().getInt("idnivel");
         idioma = getIntent().getExtras().getInt("idioma");
         frases=new ArrayList<Frase>();
-        c = db.getAllFrases(nivel);
+        int nivelUltimoDigito = nivel %10;
+        c = db.getAllFrases(nivelUltimoDigito);
 
         tts = new TextToSpeech(this,OnInit);
 
