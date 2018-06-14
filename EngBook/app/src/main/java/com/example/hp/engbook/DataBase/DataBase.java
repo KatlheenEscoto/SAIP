@@ -344,6 +344,18 @@ public class DataBase extends SQLiteOpenHelper {
         return regInsertado;
     }
 
+    public  void actualizarPuntuacion(Intento_Examen intento_examen)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String id = String.valueOf(intento_examen.getIdIntento());
+        String idExamen = String.valueOf(intento_examen.getIdExamen());
+        String[] ids = {id,idExamen};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("puntuacion", intento_examen.getPuntuacion());
+        db.update("intento_examen",contentValues,"idintento = ? AND idexamen = ?", ids);
+
+    }
+
     public Cursor puntuacionesIntentoExamen(int idExamen, int idUser, int idioma){
         String[] campo = new String[] {"puntuacion"};
         String idiomaStr = String.valueOf(idioma);
