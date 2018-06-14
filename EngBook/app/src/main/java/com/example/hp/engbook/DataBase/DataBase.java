@@ -396,5 +396,13 @@ public class DataBase extends SQLiteOpenHelper {
         return resultado;
     }
 
+    public Cursor idExamen(int idUser, int idioma)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from  examen WHERE id_user= "+idUser+" and idioma ="+idioma,null);
+
+        return  cursor;
+    }
+
 
 }

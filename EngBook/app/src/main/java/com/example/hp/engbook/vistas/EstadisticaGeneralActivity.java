@@ -23,6 +23,7 @@ public class EstadisticaGeneralActivity extends AppCompatActivity {
 
     private int idioma, id_user;
     private DataBase db;
+    private int idExamen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +38,15 @@ public class EstadisticaGeneralActivity extends AppCompatActivity {
         ArrayList<BarEntry> BarEntry = new ArrayList<>();
 
         int resultado = db.contarExamenes(idioma);
+        Cursor cursor1 = db.idExamen(id_user,idioma);
+        if(cursor1.moveToFirst())
+        {
+            idExamen=cursor1.getInt(0);
+        }
+
         if(resultado>0){
             for(int i = 1; i<=resultado; i++){
-                Cursor cursor =  db.puntuacionMaximaPorExamen(i,id_user,idioma);
+                Cursor cursor =  db.puntuacionMaximaPorExamen(idExamen++,id_user,idioma);
                 if(cursor!= null && cursor.getCount()>0){
                     while(cursor.moveToNext()){
                         BarEntry.add(new BarEntry(i,cursor.getFloat(0)));
