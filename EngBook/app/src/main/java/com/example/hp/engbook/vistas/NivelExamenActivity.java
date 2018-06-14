@@ -29,8 +29,8 @@ import java.util.Locale;
 public class NivelExamenActivity extends AppCompatActivity {
     private DataBase db;
     //Unicamente para probar gráficos.
-    private TextView palabra,resp;
-    private EditText edtPuntaje, editRespuesta;
+    private TextView resp;
+    private EditText editRespuesta;
     private int nivel=0, idioma=0, id_user =0, fin=0, i=0,signivel=0, intentos=0;
     private int intento = 0;
     private Cursor c;
@@ -38,6 +38,7 @@ public class NivelExamenActivity extends AppCompatActivity {
     private ImageView img;
     private TextToSpeech tts;
     public int numPalabras =0, aciertos=0;
+    private Button button;
 
 
     @Override
@@ -61,6 +62,7 @@ public class NivelExamenActivity extends AppCompatActivity {
         c = db.getAllFrases(nivelUltimoDigito);
 
 
+
         tts = new TextToSpeech(this,OnInit);
 
         if(c!=null && c.getCount()>0){
@@ -81,23 +83,24 @@ public class NivelExamenActivity extends AppCompatActivity {
 
     }
 
-    public void puntaje(View view)
+    public void puntaje()
     {
 
         String palabraIdioma = resp.getText().toString().toLowerCase().trim();
         String palabraRespuesta = editRespuesta.getText().toString().toLowerCase().trim();
-        if(palabraRespuesta.isEmpty())
-        {
-            Toast.makeText(this, "Campo Obligatorio", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            if (palabraRespuesta.compareTo(palabraIdioma) == 0) {
-                aciertos++;
-                Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show();
+        if(editRespuesta.isEnabled()) {
+            if (palabraRespuesta.isEmpty()) {
+                Toast.makeText(this, "Campo Obligatorio", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Incorrecto", Toast.LENGTH_SHORT).show();
+                if (palabraRespuesta.compareTo(palabraIdioma) == 0) {
+                    aciertos++;
+                    Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Incorrecto", Toast.LENGTH_SHORT).show();
+                }
             }
         }
+
     }
 
     TextToSpeech.OnInitListener OnInit = new TextToSpeech.OnInitListener() {
@@ -161,11 +164,11 @@ public class NivelExamenActivity extends AppCompatActivity {
         if(fin>0){
             if(i<fin){
                 i=i+1;
-            }else if(i >= fin){
-                signivel=1;
-                intentos+=1;
-                i=0;
+            }else if(i == fin){
+                Toast.makeText(this,"Finalizó el examen presione el cheque para salir", Toast.LENGTH_SHORT).show();
+                editRespuesta.setEnabled(false);
             }
+            puntaje();
             insertar();
             editRespuesta.setText("");
         }else
@@ -184,9 +187,7 @@ public class NivelExamenActivity extends AppCompatActivity {
         else Metodos.vibrateShort(this);
     }
 
-    public void limpiarTexto(View v){
-        edtPuntaje.setText("");
-    }
+
 
 
     @Override
