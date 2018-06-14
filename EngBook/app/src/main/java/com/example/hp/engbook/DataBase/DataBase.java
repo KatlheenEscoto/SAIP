@@ -39,7 +39,7 @@ public class DataBase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+TABLE_NAME1+" (ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT UNIQUE ,PASSWORD TEXT NOT NULL )");
         db.execSQL("CREATE TABLE ejercicio (ID INTEGER PRIMARY KEY AUTOINCREMENT,nivel TEXT NOT NULL, intentos INTEGER NOT NULL,imagen INTEGER NOT NULL, fecha TEXT NOT NULL, debloqueado INTEGER NOT NULL,idioma INTEGER NOT NULL, ID_USER INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE frase (ID INTEGER PRIMARY KEY AUTOINCREMENT,palabra TEXT NOT NULL, ingles TEXT NOT NULL,portugues NOT NULL,imagen INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE frase (ID INTEGER PRIMARY KEY AUTOINCREMENT,palabra TEXT NOT NULL, ingles TEXT NOT NULL,portugues TEXT NOT NULL,imagen INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE nivel_palabra (idejercicio INTEGER NOT NULL, idfrase INTEGER NOT NULL, PRIMARY KEY(idejercicio,idfrase))");
 
         //Tablas para Examen (modificar) porque solo considere para los graficos los atributos.
