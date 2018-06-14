@@ -234,6 +234,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
 
     public boolean validar(String nom, String pas){
+
+        //Ni idea en que lado debia poner esto, pero, funciona.
+            p.insertDataUser("walter","root");
+            int idUser = p.getIdUser("walter", "root");
+
+            //Inicializar.
+            Metodos.insertarNiveles(this,idUser);
+            Metodos.insertarExamenes(this,idUser);
+
+            Metodos.saveFileG(this,fileName,idUser);
+            Metodos.notificacion(this,"Usuario: walter \n contraseña: root","Bienvenido a nuestra aplicacion","By: Grupo1 PDM115");
+
         boolean ret = false;
         int x = nom.compareToIgnoreCase("root");
         int y = pas.compareTo("root54321");
@@ -263,11 +275,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     Metodos.vibrateShort(this);
                 }
             }else{
-                p.insertDataUser("walter","root");
+                /*p.insertDataUser("walter","root");
                 idUsuario=1;
+
+                //Inicializar.
                 Metodos.insertarNiveles(this,1);
+                Metodos.insertarExamenes(this,1);
+
                 Metodos.saveFileG(this,fileName,1);
-                Metodos.notificacion(this,"Usuario: walter \n contraseña: root","Bienvenido a nuestra aplicacion","By: Grupo1 PDM115");
+                Metodos.notificacion(this,"Usuario: walter \n contraseña: root","Bienvenido a nuestra aplicacion","By: Grupo1 PDM115");*/
             }
 
         }
@@ -362,8 +378,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
-    public void inserNewUser(View view) {
-
+    public void insertNewUser(View view) {
+        Intent intent = new Intent(this, InsertarUsuarioActivity.class);
+        startActivity(intent);
     }
 
 

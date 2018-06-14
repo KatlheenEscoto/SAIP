@@ -10,6 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,37 +20,55 @@ import com.example.hp.engbook.DataBase.DataBase;
 import com.example.hp.engbook.Metodos;
 import com.example.hp.engbook.R;
 import com.example.hp.engbook.model.Frase;
+import com.example.hp.engbook.model.Intento_Examen;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class NivelActivity extends AppCompatActivity {
-    private TextView palabra,resp;
-    private ImageView img;
-    private List<Frase> frases;
-    private int i=0,fin=0,idioma=0,signivel=0,nivel=0,intentos=0;
-    private Cursor c;
+public class NivelExamenActivity extends AppCompatActivity {
     private DataBase db;
+    //Unicamente para probar gráficos.
+    private TextView resp;
+    private EditText editRespuesta;
+    private int nivel=0, idioma=0, id_user =0, fin=0, i=0,signivel=0, intentos=0;
+    private int intento = 0;
+    private Cursor c;
+    private List<Frase> frases;
+    private ImageView img;
     private TextToSpeech tts;
+    public int numPalabras =0, aciertos=0;
+    private Button button;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nivel);
+        setContentView(R.layout.activity_nivel_examen);
+
         db = new DataBase(this);
-        palabra = (TextView)findViewById(R.id.palabra);
+
+
+        nivel = getIntent().getExtras().getInt("idnivel");
+        idioma = getIntent().getExtras().getInt("idioma");
+        id_user = getIntent().getExtras().getInt("id_user");
         resp =(TextView)findViewById(R.id.idioma);
         img = (ImageView)findViewById(R.id.img);
+        editRespuesta = (EditText)findViewById(R.id.editRespuesta);
         nivel = getIntent().getExtras().getInt("idnivel");
         idioma = getIntent().getExtras().getInt("idioma");
         frases=new ArrayList<Frase>();
         int nivelUltimoDigito = nivel %10;
+
         if(nivelUltimoDigito == 0 && idioma == 1){
             nivelUltimoDigito = 10;
         }else if(nivelUltimoDigito == 0 && idioma == 2){
             nivelUltimoDigito = 20;
         }
+
         c = db.getAllFrases(nivelUltimoDigito);
+
+
 
         tts = new TextToSpeech(this,OnInit);
 
@@ -61,7 +81,33 @@ public class NivelActivity extends AppCompatActivity {
         }
         fin = frases.size()-1;
 
-        if(fin>1) insertar();
+
+        if(fin>1)
+        {
+            insertar();
+        }
+        numPalabras+=fin;
+
+    }
+
+    public void puntaje()
+    {
+
+        String palabraIdioma = resp.getText().toString().toLowerCase().trim();
+        String palabraRespuesta = editRespuesta.getText().toString().toLowerCase().trim();
+        if(editRespuesta.isEnabled()) {
+            if (palabraRespuesta.isEmpty()) {
+                Toast.makeText(this, "Campo Obligatorio", Toast.LENGTH_SHORT).show();
+            } else {
+                if (palabraRespuesta.compareTo(palabraIdioma) == 0) {
+                    aciertos++;
+                    Toast.makeText(this, "Correcto", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Incorrecto", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+
     }
 
     TextToSpeech.OnInitListener OnInit = new TextToSpeech.OnInitListener() {
@@ -82,16 +128,33 @@ public class NivelActivity extends AppCompatActivity {
         }
     };
 
+    public void insertarPuntaje(){
+            float puntuacion = (10/numPalabras)*aciertos ;
+            if(puntuacion>10 || puntuacion<0){
+                Toast.makeText(this, "Error en el rango. Es de 0 a 10.", Toast.LENGTH_SHORT).show();
+            }else{
+                intento +=1;
+                boolean res = db.insertarIntentoExamen(new Intento_Examen(intento, puntuacion,idioma ,nivel, id_user));
+                if(res==true){
+                    Toast.makeText(this, "Puntuación Insertada.", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "Puntuación NO Insertada.", Toast.LENGTH_SHORT).show();
+                }
+                if(puntuacion>=6.0){
+                    nivel +=1;
+                    db.desbloquearExamen(nivel);
+                    Toast.makeText(this, "Siguiente examen desbloqueado.", Toast.LENGTH_SHORT).show();
+                    nivel -=1;
+                }else{
+                    Toast.makeText(this, "No paso el examen.", Toast.LENGTH_SHORT).show();
+                }
+            }
 
-    public void onDestroy(){
-        tts.shutdown();
-        super.onDestroy();
     }
 
     private void insertar() {
         Frase f = frases.get(i);
         img.setImageResource(f.getImagen());
-        palabra.setText(f.getPalabra());
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.bounce);
         img.startAnimation(animation);
         if(idioma==1){
@@ -102,20 +165,19 @@ public class NivelActivity extends AppCompatActivity {
             resp.setText("No hay traduccion en este momento");
         }
     }
-
     private void siguiente(){
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.left);
         img.startAnimation(animation);
         if(fin>0){
             if(i<fin){
                 i=i+1;
-            }else if(i >= fin){
-                signivel=1;
-                intentos+=1;
-                i=0;
+            }else if(i == fin){
+                Toast.makeText(this,"Finalizó el examen presione el cheque para salir", Toast.LENGTH_SHORT).show();
+                editRespuesta.setEnabled(false);
             }
-
+            puntaje();
             insertar();
+            editRespuesta.setText("");
         }else
             Metodos.vibrateSimple(this);
     }
@@ -131,6 +193,9 @@ public class NivelActivity extends AppCompatActivity {
         }
         else Metodos.vibrateShort(this);
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -176,23 +241,11 @@ public class NivelActivity extends AppCompatActivity {
                 Metodos.vibrateShort(this);
             }
         }
+        insertarPuntaje();
         finish();
     }
 
     public void escuchar(View view) {
         tts.speak(resp.getText().toString(), TextToSpeech.QUEUE_ADD, null);
     }
-
-    public void puntaje(View view) {
-    }
-
 }
-
-
-
-
-
-
-
-
-

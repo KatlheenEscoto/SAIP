@@ -12,6 +12,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.example.hp.engbook.DataBase.DataBase;
 import com.example.hp.engbook.R;
+import com.example.hp.engbook.model.Examen;
 import com.example.hp.engbook.model.Frase;
 import com.example.hp.engbook.model.Nivel;
 import com.example.hp.engbook.model.Nivel_Palabra;
@@ -144,6 +145,35 @@ public class Metodos {
         db.insertnivel_palabra(new Nivel_Palabra(3,id,13));
         db.insertnivel_palabra(new Nivel_Palabra(4,id,14));
         db.insertnivel_palabra(new Nivel_Palabra(5,id,15));
+
     }
+
+    //Examenes
+    public static void insertarExamenes(Context ctx, int idUser){
+        DataBase db = new DataBase(ctx);
+        db.insertarExamen(new Examen(1,"Examen 1", R.drawable.desbloqueado, 1, 1, idUser));
+        db.insertarExamen(new Examen(2,"Examen 2", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(3,"Examen 3", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(4,"Examen 4", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(5,"Examen 5", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(6,"Examen 6", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(7,"Examen 7", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(8,"Examen 8", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(9,"Examen 9", R.drawable.bloqueado, 0, 1, idUser));
+        db.insertarExamen(new Examen(10,"Examen 10", R.drawable.bloqueado, 0, 1, idUser));
+
+        db.insertarExamen(new Examen(11,"Examen 1", R.drawable.desbloqueado, 1, 2, idUser));
+        db.insertarExamen(new Examen(12,"Examen 2", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(13,"Examen 3", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(14,"Examen 4", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(15,"Examen 5", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(16,"Examen 6", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(17,"Examen 7", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(18,"Examen 8", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(19,"Examen 9", R.drawable.bloqueado, 0, 2, idUser));
+        db.insertarExamen(new Examen(20,"Examen 10", R.drawable.bloqueado, 0, 2, idUser));
+
+    }
+
 
 }

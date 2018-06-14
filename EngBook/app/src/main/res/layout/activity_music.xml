@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="5dp"
         android:src="@drawable/play"
         android:onClick="play"
         />
@@ -77,10 +77,10 @@
         android:id="@+id/btnstop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="170dp"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/stop"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="5dp"
         android:onClick="stop"
         />
 
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/cheque"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="5dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="50dp"
         android:onClick="sig"
