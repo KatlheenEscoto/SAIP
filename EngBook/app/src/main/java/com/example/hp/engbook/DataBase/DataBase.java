@@ -22,7 +22,7 @@ import java.util.ArrayList;
  */
 
 public class DataBase extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "databasePrueba5.db";
+    public static final String DATABASE_NAME = "databasePrueba10.db";
 
     public static final String TABLE_NAME1 = "user_table";
     public static final String COL_1 = "NAME";
