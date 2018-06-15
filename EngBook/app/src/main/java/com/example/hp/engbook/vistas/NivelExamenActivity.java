@@ -139,7 +139,8 @@ public class NivelExamenActivity extends AppCompatActivity {
                 if(res==true){
                     Toast.makeText(this, "Puntuación Insertada.", Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(this, "Puntuación NO Insertada.", Toast.LENGTH_SHORT).show();
+                    db.actualizarPuntuacion(new Intento_Examen(intento, puntuacion,idioma ,getIntent().getExtras().getInt("idnivel"), id_user));
+                    Toast.makeText(this, "Puntuación actualizada.", Toast.LENGTH_SHORT).show();
                 }
                 if(puntuacion>=6.0){
                     nivel +=1;
@@ -169,31 +170,36 @@ public class NivelExamenActivity extends AppCompatActivity {
     private void siguiente(){
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.left);
         img.startAnimation(animation);
-        if(fin>0){
-            if(i<fin){
-                i=i+1;
-            }else if(i == fin){
-                Toast.makeText(this,"Finalizó el examen presione el cheque para salir", Toast.LENGTH_SHORT).show();
-                editRespuesta.setEnabled(false);
+        if(editRespuesta.isEnabled())
+        {
+            if(editRespuesta.getText().toString().isEmpty())
+            {
+                Toast.makeText(this,"Digite su respuesta", Toast.LENGTH_SHORT).show();
+                insertar();
             }
-            puntaje();
-            insertar();
-            editRespuesta.setText("");
-        }else
-            Metodos.vibrateSimple(this);
+            else {
+                if (fin > 0) {
+                    if (i < fin) {
+                        i = i + 1;
+                        puntaje();
+                    }
+                    else {
+                        puntaje();
+                        Toast.makeText(this, "Finalizó el examen presione el cheque para salir", Toast.LENGTH_SHORT).show();
+                        editRespuesta.setEnabled(false);
+                    }
+
+                    insertar();
+                    editRespuesta.setText("");
+                } else
+                    Metodos.vibrateSimple(this);
+            }
+        }
+       else
+            Toast.makeText(this, "Finalizó el examen presione el cheque para salir", Toast.LENGTH_SHORT).show();
     }
 
-    private void anterior(){
-        if(fin>0){
-            if(i>0){
-                i=i-1;
-            }else if(i <= 0){
-                i=fin;
-            }
-            insertar();
-        }
-        else Metodos.vibrateShort(this);
-    }
+
 
 
 
@@ -228,9 +234,7 @@ public class NivelExamenActivity extends AppCompatActivity {
         siguiente();
     }
 
-    public void anterior(View view) {
-        anterior();
-    }
+
 
     public void listo(View view) {
         if(signivel==1){

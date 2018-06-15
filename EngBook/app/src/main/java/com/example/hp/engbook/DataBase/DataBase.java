@@ -39,7 +39,7 @@ public class DataBase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE "+TABLE_NAME1+" (ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT UNIQUE ,PASSWORD TEXT NOT NULL )");
         db.execSQL("CREATE TABLE ejercicio (ID INTEGER PRIMARY KEY AUTOINCREMENT,nivel TEXT NOT NULL, intentos INTEGER NOT NULL,imagen INTEGER NOT NULL, fecha TEXT NOT NULL, debloqueado INTEGER NOT NULL,idioma INTEGER NOT NULL, ID_USER INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE frase (ID INTEGER PRIMARY KEY AUTOINCREMENT,palabra TEXT NOT NULL, ingles TEXT NOT NULL,portugues NOT NULL,imagen INTEGER NOT NULL)");
+        db.execSQL("CREATE TABLE frase (ID INTEGER PRIMARY KEY AUTOINCREMENT,palabra TEXT NOT NULL, ingles TEXT NOT NULL,portugues TEXT NOT NULL,imagen INTEGER NOT NULL)");
         db.execSQL("CREATE TABLE nivel_palabra (idejercicio INTEGER NOT NULL, idfrase INTEGER NOT NULL, PRIMARY KEY(idejercicio,idfrase))");
 
         //Tablas para Examen (modificar) porque solo considere para los graficos los atributos.
@@ -345,6 +345,18 @@ public class DataBase extends SQLiteOpenHelper {
         return regInsertado;
     }
 
+    public  void actualizarPuntuacion(Intento_Examen intento_examen)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String id = String.valueOf(intento_examen.getIdIntento());
+        String idExamen = String.valueOf(intento_examen.getIdExamen());
+        String[] ids = {id,idExamen};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("puntuacion", intento_examen.getPuntuacion());
+        db.update("intento_examen",contentValues,"idintento = ? AND idexamen = ?", ids);
+
+    }
+
     public Cursor puntuacionesIntentoExamen(int idExamen, int idUser, int idioma){
         String[] campo = new String[] {"puntuacion"};
         String idiomaStr = String.valueOf(idioma);
@@ -394,6 +406,14 @@ public class DataBase extends SQLiteOpenHelper {
             resultado = 0;
         }
         return resultado;
+    }
+
+    public Cursor idExamen(int idUser, int idioma)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from  examen WHERE id_user= "+idUser+" and idioma ="+idioma,null);
+
+        return  cursor;
     }
 
 

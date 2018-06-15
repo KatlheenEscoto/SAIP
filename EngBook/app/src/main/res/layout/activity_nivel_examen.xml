@@ -48,27 +48,17 @@
 
     <ImageView
         android:id="@+id/imagass"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/sig"
+        android:layout_width="175dp"
+        android:layout_height="150dp"
+        android:src="@drawable/siguienteexamen"
         android:onClick="siguiente"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
+        android:layout_marginRight="75dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         />
 
-    <ImageView
-        android:id="@+id/igmas"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/anterior"
-        android:onClick="anterior"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        />
+
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"

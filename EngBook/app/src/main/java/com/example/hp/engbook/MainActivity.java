@@ -17,6 +17,7 @@ import com.example.hp.engbook.model.ModelAdapter;
 import com.example.hp.engbook.vistas.DondeEstoyActivity;
 import com.example.hp.engbook.vistas.EjercicioActivity;
 import com.example.hp.engbook.vistas.ExamenActivity;
+import com.example.hp.engbook.vistas.MapsActivity;
 import com.example.hp.engbook.vistas.OpcionesGraficoActivity;
 
 import java.util.ArrayList;
@@ -24,13 +25,18 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private String[] menu = {"Ejercicios","Examenes","Avance","Estadisticas","Configuracion"};
+<<<<<<< HEAD
     private Class[] clases = {EjercicioActivity.class,ExamenActivity.class,AvanceActivity.class, OpcionesGraficoActivity.class,EjercicioActivity.class};
+=======
+    private Class[] clases = {EjercicioActivity.class,ExamenActivity.class,EjercicioActivity.class, OpcionesGraficoActivity.class,MapsActivity.class};
+>>>>>>> a66441233a67031754236c8c462bf05cb7feb894
     private ListView lista;
     private RadioGroup radios;
     private int id_user;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lista = (ListView)findViewById(R.id.listaMenu);
@@ -79,13 +85,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         switch (item.getItemId()){
             case R.id.opcion:
                 salir();
                 break;
             case R.id.opcion2:
-                Intent i = new Intent(this, DondeEstoyActivity.class);
+                Intent i = new Intent(this, MapsActivity.class);
                 startActivity(i);
                 break;
         }
