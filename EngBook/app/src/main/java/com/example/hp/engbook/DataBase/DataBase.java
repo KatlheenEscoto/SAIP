@@ -290,6 +290,7 @@ public class DataBase extends SQLiteOpenHelper {
         cv.put("nivelexamen",examen.getNivelExamen());
         cv.put("imagen", examen.getImagen());
         cv.put("desbloqueado", examen.getDesbloqueado());
+
         cv.put("idioma", examen.getIdioma());
         cv.put("id_user", examen.getIdUser());
 
@@ -346,6 +347,17 @@ public class DataBase extends SQLiteOpenHelper {
 
     public Cursor puntuacionesIntentoExamen(int idExamen, int idUser, int idioma){
         String[] campo = new String[] {"puntuacion"};
+        String idiomaStr = String.valueOf(idioma);
+        String idExamenStr = String.valueOf(idExamen);
+        String idUserStr = String.valueOf(idUser);
+        String[] id = new String[] {idiomaStr,idExamenStr, idUserStr};
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.query("intento_examen",campo, "idioma = ? and idexamen = ? and id_user = ?", id, null, null, null);
+        return cursor;
+    }
+    public Cursor avanceExamen(int idExamen, int idUser, int idioma){
+        String[] campo = new String[] {"puntuacion*10"};
         String idiomaStr = String.valueOf(idioma);
         String idExamenStr = String.valueOf(idExamen);
         String idUserStr = String.valueOf(idUser);

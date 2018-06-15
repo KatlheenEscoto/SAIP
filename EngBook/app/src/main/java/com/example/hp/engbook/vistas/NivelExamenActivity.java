@@ -37,7 +37,7 @@ public class NivelExamenActivity extends AppCompatActivity {
     private List<Frase> frases;
     private ImageView img;
     private TextToSpeech tts;
-    public int numPalabras =0, aciertos=0;
+    public int numPalabras =0, aciertos=1;
     private Button button;
 
 
@@ -129,6 +129,7 @@ public class NivelExamenActivity extends AppCompatActivity {
     };
 
     public void insertarPuntaje(){
+
             float puntuacion = (10/numPalabras)*aciertos ;
             if(puntuacion>10 || puntuacion<0){
                 Toast.makeText(this, "Error en el rango. Es de 0 a 10.", Toast.LENGTH_SHORT).show();

@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 
 import com.example.hp.engbook.model.Adapter;
+import com.example.hp.engbook.vistas.AvanceActivity;
 import com.example.hp.engbook.vistas.EstadisticasActivity;
 import com.example.hp.engbook.model.ModelAdapter;
 import com.example.hp.engbook.vistas.DondeEstoyActivity;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private String[] menu = {"Ejercicios","Examenes","Avance","Estadisticas","Configuracion"};
-    private Class[] clases = {EjercicioActivity.class,ExamenActivity.class,EjercicioActivity.class, OpcionesGraficoActivity.class,EjercicioActivity.class};
+    private Class[] clases = {EjercicioActivity.class,ExamenActivity.class,AvanceActivity.class, OpcionesGraficoActivity.class,EjercicioActivity.class};
     private ListView lista;
     private RadioGroup radios;
     private int id_user;
